@@ -6,6 +6,21 @@ const Dessert = require("../../models/Dessert");
 
 router.get("/test", (req, res) => res.json({ msg: "Desserts Works" }));
 
+router.get("/search/:query", (req, res) => {
+  const errors = {};
+  const name = req.params.query;
+  console.log("search : " + name)
+  Dessert.find({ name: new RegExp('^' + name, "i") })
+    .then(dessert => {
+      if (!dessert) {
+        errors.nodessert = "desserts not exists";
+        res.status(404).json(errors);
+      }
+      res.json(dessert);
+    })
+    .catch(err => res.status(404).json({ dessert: "dessert not exists" }));
+});
+
 router.post("/add", (req, res) => {
   const newDessert = new Dessert({
     name: req.body.name,
