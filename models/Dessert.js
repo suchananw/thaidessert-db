@@ -11,6 +11,10 @@ const DessertSchema = new Schema({
     type: String,
     required: true
   },
+  squareimg: {
+    type: String,
+    required: false
+  },
   type: {
     type: String,
     required: false
