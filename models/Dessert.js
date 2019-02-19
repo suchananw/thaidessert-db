@@ -7,6 +7,10 @@ const DessertSchema = new Schema({
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: false
+  },
   img: {
     type: String,
     required: true
@@ -22,6 +26,10 @@ const DessertSchema = new Schema({
   ingredients: {
     type: [String],
     required: false
+  },
+  allergyNotice: {
+    type: String,
+    requried: false
   }
 });
 
